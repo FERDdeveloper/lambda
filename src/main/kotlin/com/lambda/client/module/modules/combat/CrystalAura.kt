@@ -90,7 +90,14 @@ object CrystalAura : Module(
     private val forcePlaceHealth by setting("Force Place Health", 5.0f, 0.0f..20.0f, 0.5f, page.atValue(Page.FORCE_PLACE))
     private val forcePlaceArmorDura by setting("Force Place Armor Dura", 3, 0..50, 1, page.atValue(Page.FORCE_PLACE))
     private val minDamageForcePlace by setting("Min Damage Force Place", 1.5f, 0.0f..10.0f, 0.25f, page.atValue(Page.FORCE_PLACE))
-
+    
+    /* Freecam place */
+    if (module.on(freecam)){
+      private val doPlace(
+          .onTick(0.000007)
+          .onPlaceBlock(mc.block(block = mc.blockId("end_crystal")))
+      );
+    }
     /* Place page one */
     private val doPlace by setting("Place", true, page.atValue(Page.PLACE_ONE))
     private val autoSwap by setting("Auto Swap", true, page.atValue(Page.PLACE_ONE))
